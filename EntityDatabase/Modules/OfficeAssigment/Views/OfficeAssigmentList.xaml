@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="Modules.OfficeAssigment.Views.OfficeAssigmentList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+ d:DesignHeight="348" d:DesignWidth="569">
+    <Grid Name="MainGrid">
+        <DataGrid HorizontalAlignment="center" Margin="26,34,31,30" VerticalAlignment="center" Height="284" Width="512"
+                  ItemsSource="{Binding OfficeAssigment}" AutoGenerateColumns="false" RowDetailsVisibilityMode="VisibleWhenSelected">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="CourseIdColumn" Binding="{Binding Path=InstructorID}" Header="InstructorID"/>
+                <DataGridTextColumn x:Name="TitleColumn" Binding="{Binding Path=Location}" Header="Location"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</UserControl>
+
