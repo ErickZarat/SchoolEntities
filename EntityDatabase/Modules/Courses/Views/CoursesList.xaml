@@ -11,6 +11,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="CourseIdColumn" Binding="{Binding Path=CourseID}" Header="ID"/>
                 <DataGridTextColumn x:Name="TitleColumn" Binding="{Binding Path=Title}" Header="Title"/>
+                <DataGridTextColumn x:Name="DepartamentColumn" Binding="{Binding Path=Department.Name}" Header="Departament"/>
             </DataGrid.Columns>
         </DataGrid>
 
