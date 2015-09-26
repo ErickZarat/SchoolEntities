@@ -9,7 +9,7 @@
         <DataGrid HorizontalAlignment="center" Margin="26,34,31,30" VerticalAlignment="center" Height="284" Width="512"
                   ItemsSource="{Binding OnsiteCourses}" AutoGenerateColumns="False" RowDetailsVisibilityMode="VisibleWhenSelected">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="CourseIdColumn" Binding="{Binding Path=CourseID}" Header="CourseID"/>
+                <DataGridTextColumn x:Name="CourseIdColumn" Binding="{Binding Path=Course.Title}" Header="Course"/>
                 <DataGridTextColumn x:Name="TitleColumn" Binding="{Binding Path=Location}" Header="Location"/>
             </DataGrid.Columns>
         </DataGrid>
