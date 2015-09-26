@@ -9,7 +9,7 @@
         <DataGrid HorizontalAlignment="center" Margin="26,34,31,30" VerticalAlignment="center" Height="284" Width="512"
                   ItemsSource="{Binding OnlineCourses}" AutoGenerateColumns="false" RowDetailsVisibilityMode="VisibleWhenSelected">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="NameColumn" Binding="{Binding Path=CourseID}" Header="CourseID"/>
+                <DataGridTextColumn x:Name="NameColumn" Binding="{Binding Path=Course.Title}" Header="Course"/>
                 <DataGridTextColumn x:Name="BudgetColumn" Binding="{Binding Path=URL}" Header="URL"/>
             </DataGrid.Columns>
         </DataGrid>
