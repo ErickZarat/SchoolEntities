@@ -10,8 +10,9 @@
                   ItemsSource="{Binding StudentsGrades}" Height="284" Width="512"
                   AutoGenerateColumns="false" RowDetailsVisibilityMode="VisibleWhenSelected">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="PersonIdColumn" Binding="{Binding Path=StudentID}" Header="StudentID" />
-                <DataGridTextColumn x:Name="LastNameColumn" Binding="{Binding Path=CourseID}" Header="CourseID" />
+                <DataGridTextColumn x:Name="PersonLastColumn" Binding="{Binding Path=Person.LastName}" Header="Last Name" />
+                <DataGridTextColumn x:Name="PersonNameColumn" Binding="{Binding Path=Person.FirstName}" Header="First Name" />
+                <DataGridTextColumn x:Name="LastNameColumn" Binding="{Binding Path=Course.Title}" Header="Course" />
                 <DataGridTextColumn x:Name="FirstNameColumn" Binding="{Binding Path=Grade}" Header="Grade"/>
             </DataGrid.Columns>
         </DataGrid>
