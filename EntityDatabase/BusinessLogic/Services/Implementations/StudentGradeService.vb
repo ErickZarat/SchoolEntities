@@ -5,7 +5,7 @@ Namespace BusinessLogic.Services.Implementations
         Implements IStudentGradeService
 
         Public Function GetAllStudentGrade() As IQueryable(Of StudentGrade) Implements IStudentGradeService.GetAllStudentGrade
-            Return DataContext.DBEntities.StudentGrades
+            Return DataContext.DBEntities.StudentGrade
         End Function
     End Class
 End Namespace

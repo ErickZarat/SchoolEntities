@@ -5,7 +5,7 @@ Namespace BusinessLogic.Services.Implementations
         Implements ICoursesService
 
         Public Function GetAllCourses() As IQueryable(Of Course) Implements ICoursesService.GetAllCourses
-            Return DataContext.DBEntities.Courses
+            Return DataContext.DBEntities.Course
         End Function
     End Class
 End Namespace

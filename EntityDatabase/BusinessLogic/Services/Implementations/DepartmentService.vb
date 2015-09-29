@@ -5,7 +5,7 @@ Namespace BusinessLogic.Services.Implementations
         Implements IDepartmentService
 
         Public Function GetAllDepartments() As IQueryable(Of Department) Implements IDepartmentService.GetAllDepartments
-            Return DataContext.DBEntities.Departments
+            Return DataContext.DBEntities.Department
         End Function
     End Class
 End Namespace
