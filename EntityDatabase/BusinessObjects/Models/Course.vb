@@ -19,7 +19,7 @@ Partial Public Class Course
     Public Overridable Property Department As Department
     Public Overridable Property OnlineCourse As OnlineCourse
     Public Overridable Property OnsiteCourse As OnsiteCourse
-    Public Overridable Property StudentGrades As ICollection(Of StudentGrade) = New HashSet(Of StudentGrade)
-    Public Overridable Property People As ICollection(Of Person) = New HashSet(Of Person)
+    Public Overridable Property StudentGrade As ICollection(Of StudentGrade) = New HashSet(Of StudentGrade)
+    Public Overridable Property Person As ICollection(Of Person) = New HashSet(Of Person)
 
 End Class

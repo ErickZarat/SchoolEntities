@@ -22,12 +22,12 @@ Partial Public Class SchoolEntities
         Throw New UnintentionalCodeFirstException()
     End Sub
 
-    Public Property Courses() As DbSet(Of Course)
-    Public Property Departments() As DbSet(Of Department)
-    Public Property OfficeAssignments() As DbSet(Of OfficeAssignment)
-    Public Property OnlineCourses() As DbSet(Of OnlineCourse)
-    Public Property OnsiteCourses() As DbSet(Of OnsiteCourse)
-    Public Property People() As DbSet(Of Person)
-    Public Property StudentGrades() As DbSet(Of StudentGrade)
+    Public Property Course() As DbSet(Of Course)
+    Public Property Department() As DbSet(Of Department)
+    Public Property OfficeAssignment() As DbSet(Of OfficeAssignment)
+    Public Property OnlineCourse() As DbSet(Of OnlineCourse)
+    Public Property OnsiteCourse() As DbSet(Of OnsiteCourse)
+    Public Property Person() As DbSet(Of Person)
+    Public Property StudentGrade() As DbSet(Of StudentGrade)
 
 End Class

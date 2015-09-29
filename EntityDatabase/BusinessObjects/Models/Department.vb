@@ -17,6 +17,6 @@ Partial Public Class Department
     Public Property StartDate As Date
     Public Property Administrator As Nullable(Of Integer)
 
-    Public Overridable Property Courses As ICollection(Of Course) = New HashSet(Of Course)
+    Public Overridable Property Course As ICollection(Of Course) = New HashSet(Of Course)
 
 End Class

@@ -18,7 +18,7 @@ Partial Public Class Person
     Public Property EnrollmentDate As Nullable(Of Date)
 
     Public Overridable Property OfficeAssignment As OfficeAssignment
-    Public Overridable Property StudentGrades As ICollection(Of StudentGrade) = New HashSet(Of StudentGrade)
-    Public Overridable Property Courses As ICollection(Of Course) = New HashSet(Of Course)
+    Public Overridable Property StudentGrade As ICollection(Of StudentGrade) = New HashSet(Of StudentGrade)
+    Public Overridable Property Course As ICollection(Of Course) = New HashSet(Of Course)
 
 End Class
