@@ -3,17 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" 
-             d:DesignHeight="348" d:DesignWidth="569">
+             mc:Ignorable="d" Height="323" Width="515">
     <Grid Name="MainGrid">
-        <DataGrid HorizontalAlignment="Left" Margin="25,30,0,0" VerticalAlignment="Top"
-                  ItemsSource="{Binding Persons}" Height="284" Width="512"
-                  AutoGenerateColumns="false" RowDetailsVisibilityMode="VisibleWhenSelected">
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" VerticalAlignment="Top"
+                  ItemsSource="{Binding Persons}" Height="284" Width="515"
+                  AutoGenerateColumns="false" RowDetailsVisibilityMode="VisibleWhenSelected"
+                  IsReadOnly="True" SelectionUnit="FullRow" SelectedItem="{Binding SelectedRow}" >
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="PersonIdColumn" Binding="{Binding Path=PersonID}" Header="ID" Width="SizeToHeader"/>
                 <DataGridTextColumn x:Name="LastNameColumn" Binding="{Binding Path=LastName}" Header="Last Name" Width="SizeToHeader"/>
                 <DataGridTextColumn x:Name="FirstNameColumn" Binding="{Binding Path=FirstName}" Header="First Name" Width="SizeToHeader"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Button Content="Agregar"  Command="{Binding InsertCommand}" HorizontalAlignment="Left" Margin="440,293,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.107,-0.65"/>
+        <Button Content="Eliminar"  Command="{Binding DeleteButtonCommand}" HorizontalAlignment="Left" Margin="357,293,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.107,-0.65"/>
     </Grid>
 </UserControl>

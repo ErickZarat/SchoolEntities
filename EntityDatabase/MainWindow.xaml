@@ -13,7 +13,7 @@
         <TabControl Height="354" VerticalAlignment="Top">
             <TabItem Header="Persons" >
                 <Grid Background="#FFE5E5E5">
-                    <persons:PersonList x:Name="PersonsUserControl" Margin="13,-13,-157,-256"/>
+                    <persons:PersonList x:Name="PersonsUserControl" />
                 </Grid>
             </TabItem>
             <TabItem Header="Departaments" >
