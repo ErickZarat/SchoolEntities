@@ -10,13 +10,14 @@ Namespace Modules.Persons.ViewModel
     Public Class NewPersonViewModel
         Inherits ViewModelBase
 
-        Public _person As New Person
+        Public _person As Person
         Private _radioCheckedEmpl As Boolean
         Private _radioCheckedStud As Boolean
         Public _okButton As ICommand
         Public _cancelButton As ICommand
         Public _resetButton As ICommand
         Public _Ventana As NewPerson
+        Public _ToEdit As Boolean
 
         Public Property FirstName As String
             Get
@@ -91,8 +92,21 @@ Namespace Modules.Persons.ViewModel
 
         Sub OkCommand()
             Try
-                DataContext.DBEntities.Person.Add(_person)
-                DataContext.DBEntities.SaveChanges()
+                If Me._ToEdit = True Then
+                    Dim personToEdit = (From x In DataContext.DBEntities.Person
+                                        Where x.PersonID = _person.PersonID
+                                        Select x).First()
+                    personToEdit.FirstName = _person.FirstName
+                    personToEdit.LastName = _person.LastName
+                    personToEdit.HireDate = _person.HireDate
+                    personToEdit.EnrollmentDate = _person.EnrollmentDate
+                    DataContext.DBEntities.SaveChanges()
+
+                Else
+                    DataContext.DBEntities.Person.Add(_person)
+                    DataContext.DBEntities.SaveChanges()
+                End If
+                
                 _Ventana.Close()
             Catch ex As Exception
                 MsgBox("No se ha podido ingresar la persona", MsgBoxStyle.Critical)
@@ -100,15 +114,23 @@ Namespace Modules.Persons.ViewModel
         End Sub
 
         Sub CancelCommand()
-
+            Me._Ventana.Close()
         End Sub
 
         Sub ResetCommand()
-            _person = New Person
+            Me._person = New Person
         End Sub
 
-        Sub New(ByRef newVentana As NewPerson)
+        Sub New(ByRef newVentana As NewPerson, persona As Person, toEdit As Boolean)
             Me._Ventana = newVentana
+            Me._person = persona
+            Me._ToEdit = toEdit
+
+            If Me._person.HireDate Is Nothing And toEdit = True Then
+                RadioCheckedStud = True
+            ElseIf Me._person.EnrollmentDate Is Nothing And toEdit = True Then
+                RadioCheckedEmpl = True
+            End If
         End Sub
     End Class
 End Namespace

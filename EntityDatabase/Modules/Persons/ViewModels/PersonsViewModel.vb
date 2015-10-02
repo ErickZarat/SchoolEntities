@@ -16,6 +16,25 @@ Namespace Modules.Persons.ViewModel
         Private _insertButtonCommand As ICommand
         Private _deleteButtonCommand As ICommand
         Private _selectedRow As Person
+        Private _updateButtonCommand As ICommand
+
+#End Region
+
+#Region "Update"
+        Public ReadOnly Property UpdateButtonCommand As ICommand
+            Get
+                If _updateButtonCommand Is Nothing Then
+                    _updateButtonCommand = New RelayCommand(AddressOf UpdatePersonDB)
+                End If
+                Return _updateButtonCommand
+            End Get
+        End Property
+
+        Sub UpdatePersonDB()
+            newp = New NewPerson(SelectedRow, True)
+            newp.ShowDialog()
+            refresh()
+        End Sub
 #End Region
 
 #Region "Delete Properties"
@@ -64,30 +83,10 @@ Namespace Modules.Persons.ViewModel
             End Set
         End Property
 
-        Public Property InsertPerson As Person
-            Get
-                Return _insertPerson
-            End Get
-            Set(value As Person)
-                _insertPerson = value
-                OnPropertyChanged("InsertPerson")
-            End Set
-        End Property
-
         Sub InsertPersonDB()
-            Using context As New SchoolEntities
-                newp = New NewPerson
-                newp.ShowDialog()
-                '_insertPerson = New Person
-                'InsertPerson.FirstName = "Mario"
-                'InsertPerson.LastName = "Perez"
-                'InsertPerson.EnrollmentDate = Date.Now
-
-                'context.Person.Add(InsertPerson)
-                'context.SaveChanges()
-                'Debug.WriteLine("se agrego la persona")
-                refresh()
-            End Using
+            newp = New NewPerson(New Person, False)
+            newp.ShowDialog()
+            refresh()
         End Sub
 #End Region
 
@@ -124,105 +123,6 @@ Namespace Modules.Persons.ViewModel
         Sub New()
             Me._persons = New ObservableCollection(Of Person)
             refresh()
-        End Sub
-#End Region
-
-
-#Region "new person"
-        Public _person As New Person
-        Private _radioCheckedEmpl As Boolean
-        Private _radioCheckedStud As Boolean
-        Public _okButton As ICommand
-        Public _cancelButton As ICommand
-        Public _resetButton As ICommand
-
-        Public Property FirstName As String
-            Get
-                Return Me._person.FirstName
-            End Get
-            Set(value As String)
-                Me._person.FirstName = value
-                OnPropertyChanged("FirstName")
-            End Set
-        End Property
-
-        Public Property LastName As String
-            Get
-                Return Me._person.LastName
-            End Get
-            Set(value As String)
-                Me._person.LastName = value
-                OnPropertyChanged("LastName")
-            End Set
-        End Property
-
-        Public Property RadioCheckedEmpl As Boolean
-            Get
-                Return Me._radioCheckedEmpl
-            End Get
-            Set(value As Boolean)
-                Me._radioCheckedEmpl = value
-                OnPropertyChanged("RadioCheckedEmpl")
-                _person.HireDate = Date.Now
-                _person.EnrollmentDate = Nothing
-            End Set
-        End Property
-
-        Public Property RadioCheckedStud As Boolean
-            Get
-                Return Me._radioCheckedStud
-            End Get
-            Set(value As Boolean)
-                Me._radioCheckedStud = value
-                OnPropertyChanged("RadioCheckedStud")
-                _person.HireDate = Nothing
-                _person.EnrollmentDate = Date.Now
-            End Set
-        End Property
-
-        Public ReadOnly Property OkButton As ICommand
-            Get
-                If Me._okButton Is Nothing Then
-                    Me._okButton = New RelayCommand(AddressOf OkCommand)
-                End If
-                Return Me._okButton
-            End Get
-        End Property
-
-        Public ReadOnly Property CancelButton As ICommand
-            Get
-                If Me._cancelButton Is Nothing Then
-                    Me._cancelButton = New RelayCommand(AddressOf CancelCommand)
-                End If
-                Return Me._cancelButton
-            End Get
-        End Property
-
-        Public ReadOnly Property ResetButton As ICommand
-            Get
-                If Me._resetButton Is Nothing Then
-                    Me._resetButton = New RelayCommand(AddressOf ResetCommand)
-                End If
-                Return _resetButton
-            End Get
-        End Property
-
-        Sub OkCommand()
-            Try
-                DataContext.DBEntities.Person.Add(_person)
-                DataContext.DBEntities.SaveChanges()
-                newp.Close()
-            Catch ex As Exception
-                MsgBox("No se ha podido ingresar la persona", MsgBoxStyle.Critical)
-            End Try
-        End Sub
-
-        Sub CancelCommand()
-            newp.Close()
-        End Sub
-
-        Sub ResetCommand()
-            _person = New Person
         End Sub
 #End Region
     End Class

@@ -8,7 +8,7 @@
         xmlns:onsite="clr-namespace:Modules.OnsiteCourses.Views"
         xmlns:onlineCourse="clr-namespace:Modules.OnlineCourses.Views" 
         xmlns:officeAssigment="clr-namespace:Modules.OfficeAssigment.Views"
-    Title="MainWindow" Height="385" Width="607">
+    Title="MainWindow" Height="385" Width="607" Icon="Resources/icon.ico">
     <Grid>
         <TabControl Height="354" VerticalAlignment="Top">
             <TabItem Header="Persons" >
