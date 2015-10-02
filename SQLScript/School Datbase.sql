@@ -171,7 +171,7 @@ IF NOT EXISTS (SELECT * FROM sys.foreign_keys
        AND parent_object_id = OBJECT_ID(N'[dbo].[OnsiteCourse]'))
 ALTER TABLE [dbo].[OnsiteCourse]  WITH CHECK ADD  
        CONSTRAINT [FK_OnsiteCourse_Course] FOREIGN KEY([CourseID])
-REFERENCES [dbo].[Course] ([CourseID])
+REFERENCES [dbo].[Course] ([CourseID]) ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[OnsiteCourse] CHECK 
        CONSTRAINT [FK_OnsiteCourse_Course]
@@ -183,7 +183,7 @@ IF NOT EXISTS (SELECT * FROM sys.foreign_keys
        AND parent_object_id = OBJECT_ID(N'[dbo].[OnlineCourse]'))
 ALTER TABLE [dbo].[OnlineCourse]  WITH CHECK ADD  
        CONSTRAINT [FK_OnlineCourse_Course] FOREIGN KEY([CourseID])
-REFERENCES [dbo].[Course] ([CourseID])
+REFERENCES [dbo].[Course] ([CourseID]) ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[OnlineCourse] CHECK 
        CONSTRAINT [FK_OnlineCourse_Course]
@@ -195,7 +195,7 @@ IF NOT EXISTS (SELECT * FROM sys.foreign_keys
        AND parent_object_id = OBJECT_ID(N'[dbo].[StudentGrade]'))
 ALTER TABLE [dbo].[StudentGrade]  WITH CHECK ADD  
        CONSTRAINT [FK_StudentGrade_Course] FOREIGN KEY([CourseID])
-REFERENCES [dbo].[Course] ([CourseID])
+REFERENCES [dbo].[Course] ([CourseID]) ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[StudentGrade] CHECK 
        CONSTRAINT [FK_StudentGrade_Course]
@@ -207,7 +207,7 @@ IF NOT EXISTS (SELECT * FROM sys.foreign_keys
        AND parent_object_id = OBJECT_ID(N'[dbo].[StudentGrade]'))
 ALTER TABLE [dbo].[StudentGrade]  WITH CHECK ADD  
        CONSTRAINT [FK_StudentGrade_Student] FOREIGN KEY([StudentID])
-REFERENCES [dbo].[Person] ([PersonID])
+REFERENCES [dbo].[Person] ([PersonID]) ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[StudentGrade] CHECK 
        CONSTRAINT [FK_StudentGrade_Student]
@@ -219,7 +219,7 @@ IF NOT EXISTS (SELECT * FROM sys.foreign_keys
    AND parent_object_id = OBJECT_ID(N'[dbo].[CourseInstructor]'))
 ALTER TABLE [dbo].[CourseInstructor]  WITH CHECK ADD  
    CONSTRAINT [FK_CourseInstructor_Course] FOREIGN KEY([CourseID])
-REFERENCES [dbo].[Course] ([CourseID])
+REFERENCES [dbo].[Course] ([CourseID]) ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[CourseInstructor] CHECK 
    CONSTRAINT [FK_CourseInstructor_Course]
@@ -231,7 +231,7 @@ IF NOT EXISTS (SELECT * FROM sys.foreign_keys
    AND parent_object_id = OBJECT_ID(N'[dbo].[CourseInstructor]'))
 ALTER TABLE [dbo].[CourseInstructor]  WITH CHECK ADD  
    CONSTRAINT [FK_CourseInstructor_Person] FOREIGN KEY([PersonID])
-REFERENCES [dbo].[Person] ([PersonID])
+REFERENCES [dbo].[Person] ([PersonID]) ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[CourseInstructor] CHECK 
    CONSTRAINT [FK_CourseInstructor_Person]
@@ -243,7 +243,7 @@ IF NOT EXISTS (SELECT * FROM sys.foreign_keys
        AND parent_object_id = OBJECT_ID(N'[dbo].[Course]'))
 ALTER TABLE [dbo].[Course]  WITH CHECK ADD  
        CONSTRAINT [FK_Course_Department] FOREIGN KEY([DepartmentID])
-REFERENCES [dbo].[Department] ([DepartmentID])
+REFERENCES [dbo].[Department] ([DepartmentID]) ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[Course] CHECK CONSTRAINT [FK_Course_Department]
 GO
@@ -254,7 +254,7 @@ IF NOT EXISTS (SELECT * FROM sys.foreign_keys
    AND parent_object_id = OBJECT_ID(N'[dbo].[OfficeAssignment]'))
 ALTER TABLE [dbo].[OfficeAssignment]  WITH CHECK ADD  
    CONSTRAINT [FK_OfficeAssignment_Person] FOREIGN KEY([InstructorID])
-REFERENCES [dbo].[Person] ([PersonID])
+REFERENCES [dbo].[Person] ([PersonID]) ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[OfficeAssignment] CHECK 
    CONSTRAINT [FK_OfficeAssignment_Person]
