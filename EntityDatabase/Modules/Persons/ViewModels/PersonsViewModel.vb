@@ -9,7 +9,6 @@ Namespace Modules.Persons.ViewModel
     Public Class PersonsViewModel
         Inherits ViewModelBase
 #Region "Declare"
-        Public Shadows newp As NewPerson
         Private _persons As ObservableCollection(Of Person)
         Private dataAccess As IPersonService
         Private _insertPerson As Person

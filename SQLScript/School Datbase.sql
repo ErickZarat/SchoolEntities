@@ -29,7 +29,7 @@ IF NOT EXISTS (SELECT * FROM sys.objects
 		AND type in (N'U'))
 BEGIN
 CREATE TABLE [dbo].[Department](
-	[DepartmentID] [int] NOT NULL,
+	[DepartmentID] [int]IDENTITY(1,1) NOT NULL,
 	[Name] [nvarchar](50) NOT NULL,
 	[Budget] [money] NOT NULL,
 	[StartDate] [datetime] NOT NULL,
@@ -67,7 +67,7 @@ IF NOT EXISTS (SELECT * FROM sys.objects
 		AND type in (N'U'))
 BEGIN
 CREATE TABLE [dbo].[OnsiteCourse](
-	[CourseID] [int] NOT NULL,
+	[CourseID] [int]IDENTITY(1,1) NOT NULL,
 	[Location] [nvarchar](50) NOT NULL,
 	[Days] [nvarchar](50) NOT NULL,
 	[Time] [smalldatetime] NOT NULL,
@@ -85,7 +85,7 @@ IF NOT EXISTS (SELECT * FROM sys.objects
 		AND type in (N'U'))
 BEGIN
 CREATE TABLE [dbo].[OnlineCourse](
-	[CourseID] [int] NOT NULL,
+	[CourseID] [int]IDENTITY(1,1) NOT NULL,
 	[URL] [nvarchar](100) NOT NULL,
  CONSTRAINT [PK_OnlineCourse] PRIMARY KEY CLUSTERED 
 (
@@ -136,7 +136,7 @@ IF NOT EXISTS (SELECT * FROM sys.objects
 		AND type in (N'U'))
 BEGIN
 CREATE TABLE [dbo].[Course](
-	[CourseID] [int] NOT NULL,
+	[CourseID] [int] IDENTITY(1,1) NOT NULL,
 	[Title] [nvarchar](100) NOT NULL,
 	[Credits] [int] NOT NULL,
 	[DepartmentID] [int] NOT NULL,

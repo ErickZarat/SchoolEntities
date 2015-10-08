@@ -4,19 +4,38 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="323" d:DesignWidth="515">
+             d:DesignHeight="323" d:DesignWidth="811">
     <Grid Name="MainGrid">
         <DataGrid HorizontalAlignment="Left" VerticalAlignment="Top"
                   ItemsSource="{Binding Departments}" Height="284" Width="515"
-                  AutoGenerateColumns="false" RowDetailsVisibilityMode="VisibleWhenSelected">
+                  AutoGenerateColumns="false" RowDetailsVisibilityMode="VisibleWhenSelected" SelectedItem="{Binding SelectedRow}">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="DepartmentIdColumn" Binding="{Binding Path=DepartmentID}" Header="ID" Width="SizeToHeader"/>
                 <DataGridTextColumn x:Name="NameColumn" Binding="{Binding Path=Name}" Header="Name" Width="SizeToHeader"/>
                 <DataGridTextColumn x:Name="BudgetColumn" Binding="{Binding Path=Budget}" Header="Budget" Width="SizeToHeader"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Add"  Command="{Binding InsertCommand}" HorizontalAlignment="Left" Margin="440,293,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.107,-0.65"/>
-        <Button Content="Delete"  Command="{Binding DeleteButtonCommand}" HorizontalAlignment="Left" Margin="360,293,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.107,-0.65"/>
-        <Button Content="Update"  Command="{Binding UpdateButtonCommand}" HorizontalAlignment="Left" Margin="280,293,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.107,-0.65"/>
+        <Button Content="Add"  Command="{Binding InsertCommand}" HorizontalAlignment="Left" Margin="715,293,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.107,-0.65"/>
+        <Button Content="Delete"  Command="{Binding DeleteButtonCommand}" HorizontalAlignment="Left" Margin="441,293,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.107,-0.65"/>
+        <Button Content="Update"  Command="{Binding UpdateButtonCommand}" HorizontalAlignment="Left" Margin="361,293,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.107,-0.65"/>
+        <Separator Margin="382,146,126,149" RenderTransformOrigin="0.5,0.5">
+            <Separator.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Separator.RenderTransform>
+
+        </Separator>
+        <Separator HorizontalAlignment="Left" Height="32" Margin="553,36,0,0" VerticalAlignment="Top" Width="237"/>
+        <Label Content="Edit Departament" FontSize="22" FontWeight="Bold" Margin="553,10,57,272"/>
+        <Label Content="Name:" FontSize="16" HorizontalAlignment="Left" Margin="546,93,0,0" VerticalAlignment="Top"/>
+        <TextBox Text="{Binding InsertDepartment.Name}" HorizontalAlignment="Left" Height="30" FontSize="16" Margin="637,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="153"/>
+        <Label Content="Budget:" FontSize="16" HorizontalAlignment="Left" Margin="546,138,0,0" VerticalAlignment="Top"/>
+        <TextBox Text="{Binding InsertDepartment.Budget}" HorizontalAlignment="Left" Height="30" FontSize="16" Margin="637,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="153"/>
+        <Label Content="Admin:" FontSize="16" HorizontalAlignment="Left" Margin="546,224,0,0" VerticalAlignment="Top"/>
+        <ComboBox ItemsSource="{Binding Persons}" SelectedItem="{Binding InsertDepartment.Administrator}" HorizontalAlignment="Left" Margin="637,227,0,0" VerticalAlignment="Top" Width="153"/>
     </Grid>
 </UserControl>
