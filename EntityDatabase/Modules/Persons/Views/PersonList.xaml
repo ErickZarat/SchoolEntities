@@ -3,8 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" Height="323" Width="515">
+             mc:Ignorable="d" Height="323" Width="811">
     <Grid Name="MainGrid">
+        <Separator Margin="392,146,116,149" RenderTransformOrigin="0.5,0.5">
+            <Separator.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Separator.RenderTransform>
+
+        </Separator>
+
         <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" VerticalAlignment="Top"
                   ItemsSource="{Binding Persons}" Height="284" Width="515"
                   AutoGenerateColumns="false" RowDetailsVisibilityMode="VisibleWhenSelected"
@@ -15,8 +27,17 @@
                 <DataGridTextColumn x:Name="FirstNameColumn" Binding="{Binding Path=FirstName}" Header="First Name" Width="SizeToHeader"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Add"  Command="{Binding InsertCommand}" HorizontalAlignment="Left" Margin="440,293,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.107,-0.65"/>
-        <Button Content="Delete"  Command="{Binding DeleteButtonCommand}" HorizontalAlignment="Left" Margin="360,293,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.107,-0.65"/>
-        <Button Content="Update"  Command="{Binding UpdateButtonCommand}" HorizontalAlignment="Left" Margin="280,293,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.107,-0.65"/>
+        <Button Content="Add"  Command="{Binding InsertCommand}" HorizontalAlignment="Left" Margin="715,293,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.107,-0.65"/>
+        <Button Content="Delete"  Command="{Binding DeleteButtonCommand}" HorizontalAlignment="Left" Margin="440,293,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.107,-0.65"/>
+        <Button Content="Update"  Command="{Binding UpdateButtonCommand}" HorizontalAlignment="Left" Margin="360,293,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.107,-0.65"/>
+        <Label Content="First Name:" FontSize="16" HorizontalAlignment="Left" Margin="546,93,0,0" VerticalAlignment="Top"/>
+        <Label Content="Last Name:" FontSize="16" HorizontalAlignment="Left" Margin="546,143,0,0" VerticalAlignment="Top"/>
+        <Label Content="The person is:" FontSize="16" HorizontalAlignment="Left" Margin="553,193,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox Text="{Binding InsertPerson.FirstName}" HorizontalAlignment="Left" Height="30" FontSize="16" Margin="637,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="153"/>
+        <TextBox Text="{Binding InsertPerson.LastName}" HorizontalAlignment="Left" Height="30" FontSize="16" Margin="636,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154"/>
+        <RadioButton GroupName="rol" IsChecked="{Binding RadioCheckedStud}" Content="Student" FontSize="16" HorizontalAlignment="Left" Margin="575,229,0,0" VerticalAlignment="Top"/>
+        <RadioButton GroupName="rol" IsChecked="{Binding RadioCheckedEmpl}" Content="Employee" FontSize="16" HorizontalAlignment="Left" Margin="575,254,0,0" VerticalAlignment="Top"/>
+        <Label Content="Edit Person" FontSize="22" FontWeight="Bold" Margin="553,10,127,272"/>
+        <Separator HorizontalAlignment="Left" Height="32" Margin="553,36,0,0" VerticalAlignment="Top" Width="237"/>
     </Grid>
 </UserControl>

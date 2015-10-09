@@ -8,42 +8,42 @@
         xmlns:onsite="clr-namespace:Modules.OnsiteCourses.Views"
         xmlns:onlineCourse="clr-namespace:Modules.OnlineCourses.Views" 
         xmlns:officeAssigment="clr-namespace:Modules.OfficeAssigment.Views"
-    Title="MainWindow" Height="385" Width="607" Icon="Resources/icon.ico">
+    Title="MainWindow" Height="385" Width="844" Icon="Resources/icon.ico">
     <Grid>
         <TabControl Height="354" VerticalAlignment="Top">
             <TabItem Header="Persons" >
                 <Grid Background="#FFE5E5E5">
-                    <persons:PersonList x:Name="PersonsUserControl" />
+                    <persons:PersonList x:Name="PersonsUserControl"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Departaments" >
                 <Grid Background="#FFE5E5E5">
-                    <departments:DepartmentsList x:Name="DepartamenstUserControl" Margin="18,-15,-24,10"/>
+                    <departments:DepartmentsList x:Name="DepartamenstUserControl" Margin="42,0,-42,0"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Course" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="54" >
                 <Grid Background="#FFE5E5E5">
-                    <courses:CoursesList x:Name="CoursesUserControl" Margin="-48,-40,-51,-29"/>
+                    <courses:CoursesList x:Name="CoursesUserControl"/>
                 </Grid>
             </TabItem>
             <TabItem Header="OfficeAssigment" Height="20" VerticalAlignment="Top" >
                 <Grid Background="#FFE5E5E5">
-                    <officeAssigment:OfficeAssigmentList x:Name="OfficeAssigList" Margin="-17,-22,-24,-9"/>
+                    <officeAssigment:OfficeAssigmentList x:Name="OfficeAssigList" />
                 </Grid>
             </TabItem>
             <TabItem Header="Online Course" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="92">
                 <Grid Background="#FFE5E5E5">
-                    <onlineCourse:OnlineCursesList x:Name="OnlineCourseUserControl" Margin="0,-23,0,0" />
+                    <onlineCourse:OnlineCursesList x:Name="OnlineCourseUserControl"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Onsite Courses" Height="20" VerticalAlignment="Top" >
                 <Grid Background="#FFE5E5E5">
-                    <onsite:OnsiteCursesList x:Name="OnsiteCoursesUserControl" Margin="-6,-30,-10,0"/>
+                    <onsite:OnsiteCursesList x:Name="OnsiteCoursesUserControl" />
                 </Grid>
             </TabItem>
             <TabItem Header="Student Grade" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="92">
                 <Grid Background="#FFE5E5E5">
-                    <studentsGrade:StudentsGradesList x:Name="StudenGradesUserControl" Margin="14,0,-14,0"/>
+                    <studentsGrade:StudentsGradesList x:Name="StudenGradesUserControl" Margin="41,0,-41,0" />
                 </Grid>
             </TabItem>
         </TabControl>

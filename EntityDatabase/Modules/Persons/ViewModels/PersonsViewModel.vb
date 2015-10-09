@@ -17,6 +17,9 @@ Namespace Modules.Persons.ViewModel
         Private _deleteButtonCommand As ICommand
         Private _selectedRow As Person
         Private _updateButtonCommand As ICommand
+        Private _toEdit As Boolean
+        Private _radioCheckedEmpl As Boolean
+        Private _radioCheckedStud As Boolean
 
 #End Region
 
@@ -31,9 +34,13 @@ Namespace Modules.Persons.ViewModel
         End Property
 
         Sub UpdatePersonDB()
-            newp = New NewPerson(SelectedRow, True)
-            newp.ShowDialog()
-            refresh()
+            Me._toEdit = True
+            InsertPerson = SelectedRow
+            If Me.InsertPerson.HireDate Is Nothing And _toEdit = True Then
+                RadioCheckedStud = True
+            ElseIf Me.InsertPerson.EnrollmentDate Is Nothing And _toEdit = True Then
+                RadioCheckedEmpl = True
+            End If
         End Sub
 #End Region
 
@@ -84,10 +91,61 @@ Namespace Modules.Persons.ViewModel
         End Property
 
         Sub InsertPersonDB()
-            newp = New NewPerson(New Person, False)
-            newp.ShowDialog()
+            If Me._ToEdit = True Then
+                Dim personToEdit = (From x In DataContext.DBEntities.Person
+                                    Where x.PersonID = _insertPerson.PersonID
+                                    Select x).First()
+                personToEdit.FirstName = _insertPerson.FirstName
+                personToEdit.LastName = _insertPerson.LastName
+                personToEdit.HireDate = _insertPerson.HireDate
+                personToEdit.EnrollmentDate = _insertPerson.EnrollmentDate
+                DataContext.DBEntities.SaveChanges()
+
+            Else
+                DataContext.DBEntities.Person.Add(InsertPerson)
+                DataContext.DBEntities.SaveChanges()
+            End If
+            InsertPerson = New Person
+            _toEdit = False
             refresh()
         End Sub
+
+        Public Property InsertPerson As Person
+            Get
+                If Me._insertPerson Is Nothing Then
+                    Me._insertPerson = New Person
+                End If
+                Return Me._insertPerson
+            End Get
+            Set(value As Person)
+                _insertPerson = value
+                OnPropertyChanged("InsertPerson")
+            End Set
+        End Property
+
+        Public Property RadioCheckedEmpl As Boolean
+            Get
+                Return Me._radioCheckedEmpl
+            End Get
+            Set(value As Boolean)
+                Me._radioCheckedEmpl = value
+                OnPropertyChanged("RadioCheckedEmpl")
+                _insertPerson.HireDate = Date.Now
+                _insertPerson.EnrollmentDate = Nothing
+            End Set
+        End Property
+
+        Public Property RadioCheckedStud As Boolean
+            Get
+                Return Me._radioCheckedStud
+            End Get
+            Set(value As Boolean)
+                Me._radioCheckedStud = value
+                OnPropertyChanged("RadioCheckedStud")
+                _insertPerson.HireDate = Nothing
+                _insertPerson.EnrollmentDate = Date.Now
+            End Set
+        End Property
 #End Region
 
 #Region "List"
@@ -122,6 +180,7 @@ Namespace Modules.Persons.ViewModel
 
         Sub New()
             Me._persons = New ObservableCollection(Of Person)
+            _insertPerson = New Person
             refresh()
         End Sub
 #End Region

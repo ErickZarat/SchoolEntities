@@ -4,10 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-                          d:DesignHeight="348" d:DesignWidth="569">
+                          d:DesignHeight="323" d:DesignWidth="515">
     <Grid Name="MainGrid">
-        <DataGrid HorizontalAlignment="Left" Margin="25,30,0,0" VerticalAlignment="Top"
-                  ItemsSource="{Binding StudentsGrades}" Height="284" Width="512"
+        <DataGrid HorizontalAlignment="Left" VerticalAlignment="Top"
+                  ItemsSource="{Binding StudentsGrades}" Height="284" Width="515"
                   AutoGenerateColumns="false" RowDetailsVisibilityMode="VisibleWhenSelected">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="PersonLastColumn" Binding="{Binding Path=Person.LastName}" Header="Last Name" />
@@ -16,5 +16,8 @@
                 <DataGridTextColumn x:Name="FirstNameColumn" Binding="{Binding Path=Grade}" Header="Grade"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Button Content="Add"  Command="{Binding InsertCommand}" HorizontalAlignment="Left" Margin="440,293,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.107,-0.65"/>
+        <Button Content="Delete"  Command="{Binding DeleteButtonCommand}" HorizontalAlignment="Left" Margin="360,293,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.107,-0.65"/>
+        <Button Content="Update"  Command="{Binding UpdateButtonCommand}" HorizontalAlignment="Left" Margin="280,293,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.107,-0.65"/>
     </Grid>
 </UserControl>
